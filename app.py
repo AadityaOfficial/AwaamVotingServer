@@ -29,6 +29,8 @@ app = Flask(__name__)
 
 #Make an app.route() decorator here
 @app.route("/")
+def testPrint():
+  return "Yes its working"
 @app.route('/token')
 @auth.login_required
 def get_auth_token():
@@ -245,5 +247,4 @@ def changeData(username,gender,mobile_number,newUsername):
 
 
 if __name__ == '__main__':
-    app.debug = False
     app.run()  
