@@ -9,8 +9,6 @@ from flask_httpauth import HTTPBasicAuth
 import json
 
 #new imports
-from oauth2client.client import flow_from_clientsecrets
-from oauth2client.client import FlowExchangeError
 import httplib2
 from flask import make_response
 import requests
@@ -248,4 +246,4 @@ def changeData(username,gender,mobile_number,newUsername):
 
 if __name__ == '__main__':
     app.debug = False
-    app.run(host='0.0.0.0', port=5000)  
+    app.run()  
