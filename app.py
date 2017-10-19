@@ -14,9 +14,6 @@ from flask import make_response
 import requests
 
 auth=HTTPBasicAuth()
-
-CLIENT_ID = json.loads(
-    open('client_secrets.json', 'r').read())['web']['client_id']
 engine = create_engine('sqlite:///app.db')
 Base.metadata.bind = engine
 
