@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.aadityasuri.awaam.ElectionClass">
+    <item
+        android:id="@+id/all_elections"
+        android:orderInCategory="0"
+        android:icon="@drawable/all_elections"
+        android:title="All Elections" />
+    <item
+        android:id="@+id/create_election"
+        android:title="Create Election"
+        android:icon="@drawable/create_election"
+        />
+    <item
+        android:id="@+id/edit_election"
+        android:title="Edit Election"
+        android:icon="@drawable/edit_election"
+        />
+    <item
+        android:id="@+id/delete_election"
+        android:title="Delete Election"
+        android:icon="@drawable/delete_election"
+        />
+    <item
+        android:id="@+id/verify_user"
+        android:title="Verify User"
+        android:icon="@drawable/verify_user"
+        />
+    <item
+        android:id="@+id/stats"
+        android:orderInCategory="1"
+        android:icon="@drawable/user_stats"
+        android:title="User Stats" />
+    <item
+        android:id="@+id/log_out"
+        android:orderInCategory="2"
+        android:icon="@drawable/logout"
+        android:title="Log Out" />
+
+</menu>
