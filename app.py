@@ -231,9 +231,9 @@ def electionFunction(organisation_name):
 #Endpoint to get election detail according to ID or make changes to election
 @app.route("/elections/<int:election_id>", methods = ['GET', 'PUT', 'DELETE'])
 #Call the method to view a specific election
-def electionFunctionId(id):
+def electionFunctionId(election_id):
   if request.method == 'GET':
-    return getElection(id)
+    return getElection(election_id)
 
 #Call the method to edit a specific election
   elif request.method == 'PUT':
@@ -314,8 +314,8 @@ def updateVotes(username,positive_vote,negative_vote):
   session.commit()
   return jsonify({'total_votes':user.total_votes,'positive_votes':user.votes_in_favour,'negative_vote':user.votes_against})
 
-def deleteElection(id):
-  election = session.query(Election).filter_by(election_id = id).one()
+def deleteElection(election_id):
+  election = session.query(Election).filter_by(election_id = election_id).one()
   session.delete(election)
   session.commit()
   return "Removed election with id %s" % id
@@ -384,8 +384,3 @@ def updatePin(username,user_pin):
   user=session.query(User).filter_by(username=username).one()
   user.userpin=user_pin
   return jsonify({'status':"pin updated",'username':username,'user_pin':user.userpin})
-
-if __name__ == '__main__':
-    app.debug = False
-    app.run(host='0.0.0.0', port=8079)  
-
