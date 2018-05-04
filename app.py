@@ -78,7 +78,7 @@ def newUser():
   user=User(username=username)
   user.hash_password(password)
   user.status=status
-  user.organisation=organisation
+  user.organisation=org
   user.role=role
   session.add(user)
   session.commit()
@@ -121,10 +121,10 @@ def electionStatus(election_id):
 @app.route("/userdata/<string:username>", methods = ['GET','PUT'])
 @auth.login_required
 def userData(username):
-    data=request.get_json(force=True)
     if request.method == 'GET':
       return getUserData(username)
     elif request.method == 'PUT':
+      data=request.get_json(force=True)
       positive_vote=data['positive_vote']
       negative_vote=data['negative_vote']
       return updateVotes(username,positive_vote,negative_vote)
@@ -139,7 +139,7 @@ def userPin(username):
       user_pin=data['user_pin']
       return updatePin(username,user_pin)
 
-@app.route("/validatuser/<string:username>", methods = ['GET','POST'])
+@app.route("/validatuser/<string:username>", methods = ['GET','POST','DELETE'])
 @auth.login_required
 def validateUser(username):
   user=session.query(User).filter_by(username=username).one()
@@ -156,6 +156,15 @@ def validateUser(username):
     user2.role=role_change
     session.add(user2)
     session.commit()
+    return jsonify({'username':smallusername,'newrole':user2.role})
+  if request.method=='DELETE':
+    data=request.get_json(force=True)
+    deluser=data['deluser']
+    deleteuser=session.query(User).filter_by(username=deluser).one()
+    session.delete(deleteuser)
+    session.commit()
+    return jsonify({'username':smallusername,'status':"deleted"})
+
 
 #Enpoint to GET election vote data and PUT new vote
 @app.route("/voteelection/<int:election_id>", methods = ['GET','PUT'])
