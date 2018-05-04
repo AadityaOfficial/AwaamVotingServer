@@ -109,6 +109,7 @@ public class SignUpScreen extends AppCompatActivity implements AdapterView.OnIte
                     jsonParams.put("password", passw);
                     jsonParams.put("status", "0");
                     jsonParams.put("role", "0");
+                    jsonParams.put("organisation",selectedOrg);
                     JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, signUpUrl, new JSONObject(jsonParams),
                             new Response.Listener<JSONObject>() {
                                 @Override

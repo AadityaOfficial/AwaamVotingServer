@@ -112,6 +112,7 @@ public class Election {
         try {
             Date nowdate = dt.parse(now);
             Date endDate = dt.parse(end);
+            Log.e("name",getmName());
             long unixTimeEnd = (long) endDate.getTime();
             Log.e("Time End take",unixTimeEnd+"");
             long unixTimeNow = (long) nowdate.getTime();

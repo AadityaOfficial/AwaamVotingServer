@@ -120,7 +120,7 @@ public class ElectionDetailed extends AppCompatActivity {
                                 group.setVisibility(View.GONE);
                             }
                             dataResult.setText("Total Votes :" + total + "\n" + "In Favour: " + positive + "  " + "Against: " + negative);
-//                                    dataResult.setText("Hello Guys");
+//                                    dataResult.setText("Hello\ Guys");
                         } catch (JSONException e1) {
                             e1.printStackTrace();
                         }

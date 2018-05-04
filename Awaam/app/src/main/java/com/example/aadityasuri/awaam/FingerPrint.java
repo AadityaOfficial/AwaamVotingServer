@@ -80,8 +80,8 @@ public class FingerPrint extends AppCompatActivity {
             if (!fingerprintManager.isHardwareDetected()) {
 //                textView.setText("No fingerPrint detected");
                 Toast.makeText(getApplicationContext(), "No Fingerprint", Toast.LENGTH_SHORT).show();
-                Intent election = new Intent(FingerPrint.this, ElectionClass.class);
-                startActivity(election);
+                Intent facialRec = new Intent(FingerPrint.this, FacialRecognition.class);
+                startActivity(facialRec);
 //                Intent PINIntent =new Intent(FingerPrint.this,ElectionClass.class);
 //                startActivity(PINIntent);
                 // If a fingerprint sensor isn’t available, then inform the user that they’ll be unable to use your app’s fingerprint functionality//

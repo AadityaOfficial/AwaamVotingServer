@@ -125,8 +125,6 @@ public class RecentFragment extends Fragment {
         };
 
         electionRequest.add(getRequest);
-
-
         adapter = new RecyclerAdapterClass(recentElections);
         rv.setAdapter(adapter);
         adapter.notifyDataSetChanged();

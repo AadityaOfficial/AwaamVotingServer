@@ -28,7 +28,7 @@
         android:icon="@drawable/verify_user"
         />
     <item
-        android:id="@+id/stats"
+        android:id="@+id/user_stats"
         android:orderInCategory="1"
         android:icon="@drawable/user_stats"
         android:title="User Stats" />

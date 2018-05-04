@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +39,7 @@ public class ElectionClass extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
         session.checkLogin();
         userdetail = session.getUserDetails();
-        String username = userdetail.get(SessionManager.KEY_EMAIL);
+        final String username = userdetail.get(SessionManager.KEY_EMAIL);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_menu);
@@ -58,6 +59,17 @@ public class ElectionClass extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
         NavigationView mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+        Menu trial = mNavigationView.getMenu();
+        trial.findItem(R.id.edit_election).setVisible(false);
+        trial.findItem(R.id.delete_election).setVisible(false);
+        //        if (userdetail.get(SessionManager.KEY_ROLE).equals("0")||userdetail.get(SessionManager.KEY_ROLE).equals("1")) {
+//            Menu trial=mNavigationView.getMenu();
+//            trial.findItem(R.id.create_election).setVisible(false);
+//            trial.findItem(R.id.edit_election).setVisible(false);
+//            trial.findItem(R.id.delete_election).setVisible(false);
+//            trial.findItem(R.id.verify_user).setVisible(false);
+//            trial.findItem(R.id.create_election).setVisible(false);
+//        }
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -65,14 +77,27 @@ public class ElectionClass extends AppCompatActivity {
                     case R.id.log_out:
                         session.logoutUser();
                         break;
-
+                    case R.id.create_election:
+                        Intent createElection = new Intent(ElectionClass.this, CreateElection.class);
+                        startActivity(createElection);
+                        break;
+                    case R.id.verify_user:
+                        Intent verifyUser = new Intent(ElectionClass.this, VerifyUser.class);
+                        startActivity(verifyUser);
+                        break;
+                    case R.id.user_stats:
+                        Intent userStats = new Intent(ElectionClass.this, UserStats.class);
+                        startActivity(userStats);
+                        break;
                 }
+
                 return true;
             }
         });
 
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

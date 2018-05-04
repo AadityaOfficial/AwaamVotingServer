@@ -43,7 +43,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         //I’m going to display the results of fingerprint authentication as a series of toasts.
         //Here, I’m creating the message that’ll be displayed if an error occurs//
 
-        Toast.makeText(context, "Authentication error\n" + errString, Toast.LENGTH_LONG).show();
+//        Toast.makeText(context, "Authentication error\n" + errString, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -68,7 +68,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     //onAuthenticationSucceeded is called when a fingerprint has been successfully matched to one of the fingerprints stored on the user’s device//
     public void onAuthenticationSucceeded(
             FingerprintManager.AuthenticationResult result) {
-        Intent i = new Intent(context, ElectionClass.class);
+        Intent i = new Intent(context, FacialRecognition.class);
         context.startActivity(i);
         Toast.makeText(context, "Success!", Toast.LENGTH_LONG).show();
     }
